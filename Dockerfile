@@ -12,10 +12,8 @@ COPY src /test
 
 WORKDIR /test
 
-COPY src/docker-entrypoint-api.sh /docker-entrypoint-api.sh
-
-RUN chmod +xxx /docker-entrypoint-api.sh
+RUN chmod +xxx docker-entrypoint-api.sh
 
 EXPOSE 8000
 
-ENTRYPOINT ["/docker-entrypoint-api.sh"]
+ENTRYPOINT ["./docker-entrypoint-api.sh"]
