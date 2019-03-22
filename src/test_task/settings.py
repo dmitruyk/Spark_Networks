@@ -18,7 +18,6 @@ DEBUG = env('DEBUG')  # False if not in os.environ
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
