@@ -12,7 +12,7 @@ COPY src /test
 
 WORKDIR /test
 
-COPY ./docker-entrypoint-api.sh /docker-entrypoint-api.sh
+COPY src/docker-entrypoint-api.sh /docker-entrypoint-api.sh
 
 RUN chmod +xxx /docker-entrypoint-api.sh
 
