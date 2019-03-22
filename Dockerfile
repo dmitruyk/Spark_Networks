@@ -4,11 +4,11 @@ ENV DEASY_GUNICORN_NUMBER_OF_WORKERS=2
 
 RUN python -m pip install --upgrade pip
 
-COPY requirements.txt /requirements.txt
+COPY src/requirements.txt /requirements.txt
 
 RUN pip install -r /requirements.txt
 
-COPY . /test
+COPY src /test
 
 WORKDIR /test
 
