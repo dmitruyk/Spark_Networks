@@ -1,0 +1,26 @@
+variables:
+  DOCKER_DRIVER: overlay2
+  REGISTRY_URL: registry.gitlab.com
+
+stages:
+  - build
+
+build:
+  image: docker:stable
+  services:
+    - docker:dind
+  stage: build
+  variables:
+    CONTAINER_IMAGE: registry.gitlab.com/$CI_PROJECT_PATH
+    CONTAINER_IMAGE_TAG: latest
+  before_script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $REGISTRY_URL
+  script:
+    - docker pull $CONTAINER_IMAGE:$CONTAINER_IMAGE_TAG || true
+    - docker build --cache-from $CONTAINER_IMAGE:$CONTAINER_IMAGE_TAG --tag $CONTAINER_IMAGE:$CONTAINER_IMAGE_TAG .
+    - docker push $CONTAINER_IMAGE:$CONTAINER_IMAGE_TAG
+  environment:
+    name: staging
+  only:
+    - transfer
+    - master
