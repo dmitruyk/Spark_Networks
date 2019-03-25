@@ -31,16 +31,16 @@ class Company(CoreModel):
 
     contactDetails_cellPhoneNumber = models.CharField(_('contactDetails_cellPhoneNumber'), max_length=180, default=None)
 
-    contactDetails_cellPhoneNumberAreaCode = models.PositiveIntegerField(_('contactDetails_address_postcode'),\
+    contactDetails_cellPhoneNumberAreaCode = models.PositiveIntegerField(_('contactDetails_cellPhoneNumberAreaCode'),\
                                                                      null=True, blank=True, default=0,\
                                                                      unique=False)
-    contactDetails_cellPhoneNumberCountryCode = models.CharField(_('contactDetails_cellPhoneNumber'), max_length=100, default=None)
+    contactDetails_cellPhoneNumberCountryCode = models.CharField(_('contactDetails_cellPhoneNumberCountryCode'), max_length=100, default=None)
 
-    contactDetails_cellPhoneNumberSubscriber = models.CharField(_('contactDetails_cellPhoneNumber'), max_length=20, default=None)
+    contactDetails_cellPhoneNumberSubscriber = models.CharField(_('contactDetails_cellPhoneNumberSubscriber'), max_length=20, default=None)
 
-    contactDetails_company = models.CharField(_('contactDetails_cellPhoneNumber'), max_length=180, default=None)
+    contactDetails_company = models.CharField(_('contactDetails_company'), max_length=180, default=None)
 
-    contactDetails_countryCode = models.CharField(_('contactDetails_cellPhoneNumber'), max_length=100, default=None)
+    contactDetails_countryCode = models.CharField(_('contactDetails_countryCode'), max_length=100, default=None)
 
     contactDetails_email = models.CharField(_('contactDetails_email'), max_length=50, default=None)
 
@@ -154,64 +154,69 @@ class RealEstate(CoreModel):
         db_table = u'real_estate'
     apartment = models.ForeignKey(
         Apartment,
-        related_name='company_rent',
+        related_name='company_rent_apart',
         on_delete=models.SET_NULL,
         null=True, blank=True
     )
-    realEstate_id = models.PositiveIntegerField(_('id'), null=True, blank=True, default=0, unique=True)
+    realEstate_id = models.PositiveIntegerField(_('id'), null=True, blank=True, default=0, unique=False)
 
-    realEstate_xsi_type = models.CharField(_('realEstate_xsi_type'), max_length=50, default=None)
+    realEstate_xsi_type = models.CharField(_('realEstate_xsi_type'), max_length=50, default=0)
 
     realEstate_address_city = models.CharField(_('realEstate_address_city'), max_length=50, default=None)
 
-    realEstate_address_geoHierarchy_city_fullGeoCodeId = models.PositiveIntegerField(_('realEstate_address_geoHierarchy_city_fullGeoCodeId'), null=True, blank=True, default=0, unique=False)
+    realEstate_address_geoHierarchy_city_fullGeoCodeId = models.CharField(_('realEstate_address_geoHierarchy_city_fullGeoCodeId'), max_length=50, default=None)
 
-    realEstate_address_geoHierarchy_city_geoCodeId = models.PositiveIntegerField(_('realEstate_address_geoHierarchy_city_geoCodeId'), null=True, blank=True, default=0, unique=False)
+    realEstate_address_geoHierarchy_city_geoCodeId = models.CharField(_('realEstate_address_geoHierarchy_city_geoCodeId'), max_length=50, default=None)
 
     realEstate_address_geoHierarchy_city_name = models.CharField(_('realEstate_address_geoHierarchy_city_name'), max_length=150, default=None)
 
-    realEstate_address_geoHierarchy_continent_fullGeoCodeId = models.CharField(_('realEstate_address_geoHierarchy_country_name'), max_length=150, default=None),
+    realEstate_address_geoHierarchy_continent_fullGeoCodeId = models.CharField(_('realEstate_address_geoHierarchy_continent_fullGeoCodeId'), max_length=150, default=None)
 
-    realEstate_address_geoHierarchy_continent_geoCodeId = models.PositiveIntegerField(_('realEstate_address_geoHierarchy_continent_geoCodeId'), null=True, blank=True, default=0, unique=False),
+    realEstate_address_geoHierarchy_continent_geoCodeId =  models.CharField(_('realEstate_address_geoHierarchy_continent_geoCodeId'), max_length=150, default=None)
 
     realEstate_address_geoHierarchy_country_name = models.CharField(_('realEstate_address_geoHierarchy_country_name'), max_length=150, default=None)
 
-    realEstate_address_geoHierarchy_neighbourhood_geoCodeId = models.PositiveIntegerField(_('realEstate_address_geoHierarchy_neighbourhood_geoCodeId'), null=True, blank=True, default=0, unique=False),
+    realEstate_address_geoHierarchy_neighbourhood_geoCodeId = models.CharField(_('realEstate_address_geoHierarchy_neighbourhood_geoCodeId'), max_length=150, default=None)
 
     realEstate_address_geoHierarchy_quarter_fullGeoCodeId = models.CharField(_('realEstate_address_geoHierarchy_quarter_fullGeoCodeId'), max_length=150, default=None)
 
-    realEstate_address_geoHierarchy_quarter_geoCodeId = models.PositiveIntegerField(_('realEstate_address_geoHierarchy_quarter_geoCodeId'), null=True, blank=True, default=0, unique=False),
+    realEstate_address_geoHierarchy_quarter_geoCodeId = models.CharField(_('realEstate_address_geoHierarchy_quarter_geoCodeId'), max_length=150, default=None)
 
-    realEstate_address_geoHierarchy_region_geoCodeId = models.PositiveIntegerField(_('realEstate_address_geoHierarchy_quarter_geoCodeId'), null=True, blank=True, default=0, unique=False),
+    realEstate_address_geoHierarchy_region_geoCodeId = models.CharField(_('realEstate_address_geoHierarchy_region_geoCodeId'), max_length=150, default=None)
 
     realEstate_address_geoHierarchy_region_name = models.CharField(_('realEstate_address_geoHierarchy_region_name'), max_length=150, default=None)
 
     realEstate_address_postcode = models.CharField(_('realEstate_address_postcode'), max_length=150, default=None)
 
-    realEstate_address_quarter = models.CharField(_('realEstate_address_quarter'), max_length=150, default=None),
+    realEstate_address_quarter = models.CharField(_('realEstate_address_quarter'), max_length=150, default=None)
 
-    realEstate_apartmentType = models.CharField(_('realEstate_address_quarter'), max_length=150, default=None),
+    realEstate_apartmentType = models.CharField(_('realEstate_apartmentType'), max_length=150, default=None)
 
-    realEstate_assistedLiving = models.CharField(_('realEstate_address_quarter'), max_length=150, default=None),
+    realEstate_assistedLiving = models.CharField(_('realEstate_assistedLiving'), max_length=150, default=None)
 
-    x_link_href = models.CharField(_('x_link_href'), max_length=280, default=None)
+    def save(self, *args, **kwargs):
+        super(RealEstate, self).save(*args, **kwargs)
+        return self.id
 
 
 class RealEstateAttachments(CoreModel):
     class Meta:
         db_table = u'realestate_attachments'
-    apartment = models.ForeignKey(
+    real_estate = models.ForeignKey(
         RealEstate,
         related_name='real_estate_attachments',
         on_delete=models.SET_NULL,
         null=True, blank=True
     )
 
-    xsi_type = models.CharField(_('xsi_type'), max_length=150, default=None),
+    realEstate_attachments_xlink_href = models.CharField(_('realEstate_attachments_xlink_href'), max_length=150,
+                                                         default=None)
 
-    xlink_href = models.CharField(_('xlink_href'), max_length=250, default=None),
+    xsi_type = models.CharField(_('xsi_type'), max_length=150, default=None)
 
-    id = models.CharField(_('id'), max_length=250, default=None),
+    xlink_href = models.CharField(_('xlink_href'), max_length=250, default=None)
+
+    id_achments = models.CharField(_('id_achments'), max_length=250, default=None)
 
     modification = models.DateTimeField(null=True, blank=True)
 
@@ -221,47 +226,62 @@ class RealEstateAttachments(CoreModel):
 
     title = models.CharField(_('title'), max_length=250, default=None)
 
-    floorplan = models.BooleanField(default=False),
+    floorplan = models.BooleanField(default=False)
 
-    titlepicture = models.BooleanField(default=False),
+    titlepicture = models.BooleanField(default=False)
 
-    realEstate_balcony = models.BooleanField(default=False),
+    def save(self, *args, **kwargs):
+        super(RealEstateAttachments, self).save(*args, **kwargs)
+        return self.id
 
-    real_estate_baseRent = models.CharField(_('real_estate_baseRent'), max_length=250, default=None),
 
-    real_estate_building_energy_rating_type = models.CharField(_('real_estate_building_energy_rating_type'), max_length=250, default=None),
+class RealEstateNext(CoreModel):
+    class Meta:
+        db_table = u'realestate_attachments_next'
+    real_estate = models.ForeignKey(
+        RealEstate,
+        related_name='real_estate_attachments_nxt',
+        on_delete=models.SET_NULL,
+        null=True, blank=True
+    )
 
-    real_estate_built_in_kitchen = models.BooleanField(default=False),
+    realEstate_balcony = models.BooleanField(default=False)
 
-    real_estate_calculated_total_rent = models.CharField(_('real_estate_calculated_total_rent'), max_length=250, default=None),
+    realEstate_baseRent = models.CharField(_('real_estate_baseRent'), max_length=250, default=None)
 
-    real_estate_calculated_total_rent_scope = models.CharField(_('real_estate_calculated_total_rent_scope'), max_length=250, default=None),
+    realEstate_buildingEnergyRatingType = models.CharField(_('real_estate_building_energy_rating_type'), max_length=250, default=None)
 
-    real_estate_cellar = models.CharField(_('real_estate_cellar'), max_length=250, default=None),
+    realEstate_builtInKitchen = models.BooleanField(default=False)
 
-    real_estate_certificate_of_eligibility_needed = models.CharField(_('real_estate_certificate_of_eligibility_needed'), max_length=250, default=None),
+    realEstate_calculatedTotalRent = models.CharField(_('real_estate_calculated_total_rent'), max_length=250, default=None)
 
-    real_estate_condition = models.CharField(_('real_estate_condition'), max_length=250, default=None),
+    realEstate_calculatedTotalRentScope = models.CharField(_('real_estate_calculated_total_rent_scope'), max_length=250, default=None)
 
-    real_estate_construction_year = models.PositiveIntegerField(_('real_estate_construction_year'),\
+    realEstate_cellar = models.CharField(_('real_estate_cellar'), max_length=250, default=None)
+
+    realEstate_certificateOfEligibilityNeeded = models.CharField(_('real_estate_certificate_of_eligibility_needed'), max_length=250, default=None)
+
+    realEstate_condition = models.CharField(_('real_estate_condition'), max_length=250, default=None)
+
+    realEstate_constructionYear = models.PositiveIntegerField(_('real_estate_construction_year'),\
                                                                      null=True, blank=True, default=0,\
                                                                      unique=False)
 
-    realEstate_courtage_hasCourtage = models.CharField(_('realEstate_courtage_hasCourtage'), max_length=250, default=None),
+    realEstate_courtage_hasCourtage = models.CharField(_('realEstate_courtage_hasCourtage'), max_length=250, default=None)
 
-    realEstate_creationDate = models.DateTimeField(null=True, blank=True),
+    realEstate_creationDate = models.DateTimeField(null=True, blank=True)
 
-    realEstate_deposit = models.CharField(_('realEstate_deposit'), max_length=250, default=None),
+    realEstate_deposit = models.CharField(_('realEstate_deposit'), max_length=250, default=None)
 
-    realEstate_descriptionNote = models.CharField(_('realEstate_descriptionNote'), max_length=1250, default=None),
+    realEstate_descriptionNote = models.CharField(_('realEstate_descriptionNote'), max_length=1250, default=None)
 
-    realEstate_energyCertificate_energyCertificateAvailability = models.CharField(_('realEstate_energyCertificate_energyCertificateAvailability'), max_length=250, default=None),
+    realEstate_energyCertificate_energyCertificateAvailability = models.CharField(_('realEstate_energyCertificate_energyCertificateAvailability'), max_length=250, default=None)
 
-    realEstate_energyCertificate_energyCertificateCreationDate = models.CharField(_('realEstate_energyCertificate_energyCertificateCreationDate'), max_length=1250, default=None),
+    realEstate_energyCertificate_energyCertificateCreationDate = models.CharField(_('realEstate_energyCertificate_energyCertificateCreationDate'), max_length=1250, default=None)
 
-    realEstate_energyConsumptionContainsWarmWater = models.CharField(_('realEstate_energyConsumptionContainsWarmWater'), max_length=250, default=None),
+    realEstate_energyConsumptionContainsWarmWater = models.CharField(_('realEstate_energyConsumptionContainsWarmWater'), max_length=250, default=None)
 
-    realEstate_energyPerformanceCertificate = models.BooleanField(default=False),
+    realEstate_energyPerformanceCertificate = models.BooleanField(default=False)
 
     realEstate_externalId = models.PositiveIntegerField(_('realEstate_externalId'),\
                                                                      null=True, blank=True, default=0,\
@@ -271,122 +291,122 @@ class RealEstateAttachments(CoreModel):
                                                                      null=True, blank=True, default=0,\
                                                                      unique=False)
 
-    realEstate_floorplan = models.BooleanField(default=False),
+    realEstate_floorplan = models.BooleanField(default=False)
 
-    realEstate_freeFrom = models.CharField(_('realEstate_freeFrom'), max_length=250, default=None),
+    realEstate_freeFrom = models.CharField(_('realEstate_freeFrom'), max_length=250, default=None)
 
-    realEstate_furnishingNote = models.CharField(_('realEstate_furnishingNote'), max_length=1250, default=None),
+    realEstate_furnishingNote = models.CharField(_('realEstate_furnishingNote'), max_length=1250, default=None)
 
-    realEstate_garden = models.BooleanField(default=False),
+    realEstate_garden = models.BooleanField(default=False)
 
-    realEstate_guestToilet = models.CharField(_('realEstate_guestToilet'), max_length=50, default=None),
+    realEstate_guestToilet = models.CharField(_('realEstate_guestToilet'), max_length=50, default=None)
 
-    realEstate_handicappedAccessible = models.CharField(_('realEstate_handicappedAccessible'), max_length=50, default=None),
+    realEstate_handicappedAccessible = models.CharField(_('realEstate_handicappedAccessible'), max_length=50, default=None)
 
     realEstate_heatingCosts = models.PositiveIntegerField(_('realEstate_heatingCosts'),\
                                                                      null=True, blank=True, default=0,\
-                                                                     unique=False),
+                                                                     unique=False)
 
-    realEstate_heatingCostsInServiceCharge = models.CharField(_('realEstate_heatingCostsInServiceCharge'), max_length=50, default=None),
+    realEstate_heatingCostsInServiceCharge = models.CharField(_('realEstate_heatingCostsInServiceCharge'), max_length=50, default=None)
 
-    realEstate_heatingType = models.CharField(_('realEstate_heatingType'), max_length=50, default=None),
+    realEstate_heatingType = models.CharField(_('realEstate_heatingType'), max_length=50, default=None)
 
-    realEstate_heatingTypeEnev2014 = models.CharField(_('realEstate_heatingTypeEnev2014'), max_length=50, default=None),
+    realEstate_heatingTypeEnev2014 = models.CharField(_('realEstate_heatingTypeEnev2014'), max_length=50, default=None)
 
-    realEstate_interiorQuality = models.CharField(_('realEstate_interiorQuality'), max_length=50, default=None),
+    realEstate_interiorQuality = models.CharField(_('realEstate_interiorQuality'), max_length=50, default=None)
 
-    realEstate_lastModificationDate = models.DateTimeField(null=True, blank=True),
+    realEstate_lastModificationDate = models.DateTimeField(null=True, blank=True)
 
     realEstate_lastRefurbishment = models.PositiveIntegerField(_('realEstate_lastRefurbishment'),\
                                                                      null=True, blank=True, default=0,\
-                                                                     unique=False),
+                                                                     unique=False)
 
-    realEstate_lift = models.BooleanField(default=False),
+    realEstate_lift = models.BooleanField(default=False)
 
     realEstate_livingSpace = models.PositiveIntegerField(_('realEstate_livingSpace'),\
                                                                      null=True, blank=True, default=0,\
-                                                                     unique=False),
+                                                                     unique=False)
 
-    realEstate_locationNote = models.CharField(_('realEstate_locationNote'), max_length=1250, default=None),
+    realEstate_locationNote = models.CharField(_('realEstate_locationNote'), max_length=1250, default=None)
 
     realEstate_numberOfFloors = models.IntegerField(_('realEstate_numberOfFloors'),\
                                                                      null=True, blank=True, default=0,\
-                                                                     unique=False),
+                                                                     unique=False)
 
     realEstate_numberOfRooms = models.PositiveIntegerField(_('realEstate_numberOfRooms'),\
                                                                      null=True, blank=True, default=0,\
-                                                                     unique=False),
+                                                                     unique=False)
 
-    realEstate_otherNote = models.CharField(_('realEstate_otherNote'), max_length=1250, default=None),
+    realEstate_otherNote = models.CharField(_('realEstate_otherNote'), max_length=1250, default=None)
 
-    realEstate_petsAllowed = models.CharField(_('realEstate_petsAllowed'), max_length=50, default=None),
+    realEstate_petsAllowed = models.CharField(_('realEstate_petsAllowed'), max_length=50, default=None)
 
-    realEstate_referencePriceApiCall = models.CharField(_('realEstate_referencePriceApiCall'), max_length=150, default=None),
+    realEstate_referencePriceApiCall = models.CharField(_('realEstate_referencePriceApiCall'), max_length=1150, default=None)
 
-    realEstate_referencePriceServiceCall = models.CharField(_('realEstate_referencePriceServiceCall'), max_length=150, default=None),
+    realEstate_referencePriceServiceCall = models.CharField(_('realEstate_referencePriceServiceCall'), max_length=1150, default=None)
 
     realEstate_serviceCharge = models.IntegerField(_('realEstate_numberOfFloors'),\
                                                                      null=True, blank=True, default=0,\
-                                                                     unique=False),
+                                                                     unique=False)
 
-    realEstate_state = models.CharField(_('realEstate_referencePriceServiceCall'), max_length=150, default=None),
+    realEstate_state = models.CharField(_('realEstate_referencePriceServiceCall'), max_length=1150, default=None)
 
-    realEstate_thermalCharacteristic = models.CharField(_('realEstate_thermalCharacteristic'), max_length=50, default=None),
+    realEstate_thermalCharacteristic = models.CharField(_('realEstate_thermalCharacteristic'), max_length=50, default=None)
 
-    realEstate_title = models.CharField(_('realEstate_thermalCharacteristic'), max_length=250, default=None),
+    realEstate_title = models.CharField(_('realEstate_thermalCharacteristic'), max_length=250, default=None)
 
-    realEstate_titlePicture_creation = models.DateTimeField(null=True, blank=True),
+    realEstate_titlePicture_creation = models.DateTimeField(null=True, blank=True)
 
     realEstate_titlePicture_id = models.IntegerField(_('realEstate_numberOfFloors'),\
                                                                      null=True, blank=True, default=0,\
-                                                                     unique=False),
+                                                                     unique=False)
 
-    realEstate_titlePicture_modification = models.DateTimeField(null=True, blank=True),
+    realEstate_titlePicture_modification = models.DateTimeField(null=True, blank=True)
 
-    realEstate_titlePicture_publishDate = models.DateTimeField(null=True, blank=True),
+    realEstate_titlePicture_publishDate = models.DateTimeField(null=True, blank=True)
 
-    realEstate_titlePicture_floorplan = models.BooleanField(default=False),
+    realEstate_titlePicture_floorplan = models.BooleanField(default=False)
 
-    realEstate_titlePicture_title = models.CharField(_('realEstate_titlePicture_title'), max_length=250, default=None),
+    realEstate_titlePicture_title = models.CharField(_('realEstate_titlePicture_title'), max_length=250, default=None)
 
-    realEstate_titlePicture_titlePicture = models.BooleanField(default=False),
+    realEstate_titlePicture_titlePicture = models.BooleanField(default=False)
 
-    realEstate_totalRent = models.CharField(_('realEstate_totalRent'), max_length=250, default=None),
+    realEstate_totalRent = models.CharField(_('realEstate_totalRent'), max_length=250, default=None)
 
-    realEstate_useAsFlatshareRoom = models.CharField(_('realEstate_useAsFlatshareRoom'), max_length=250, default=None),
+    realEstate_useAsFlatshareRoom = models.CharField(_('realEstate_useAsFlatshareRoom'), max_length=250, default=None)
 
-    realtorValuationJSONLink_xlink_href = models.CharField(_('realtorValuationJSONLink_xlink_href'), max_length=550, default=None),
+    realtorValuationJSONLink_xlink_href = models.CharField(_('realtorValuationJSONLink_xlink_href'), max_length=550, default=None)
 
-    realtorValuationV2JSONLink_xlink_href = models.CharField(_('realtorValuationJSONLink_xlink_href'), max_length=550, default=None),
+    realtorValuationV2JSONLink_xlink_href = models.CharField(_('realtorValuationJSONLink_xlink_href'), max_length=550, default=None)
 
-    realtorValuationV2JSONPLink_xlink_href = models.CharField(_('realtorValuationV2JSONPLink_xlink_href'), max_length=550, default=None),
+    realtorValuationV2JSONPLink_xlink_href = models.CharField(_('realtorValuationV2JSONPLink_xlink_href'), max_length=550, default=None)
 
 
 class Url(CoreModel):
     class Meta:
         db_table = u'url'
-    apartment = models.ForeignKey(
-        RealEstateAttachments,
+    realestate = models.ForeignKey(
+        RealEstate,
         related_name='real_url',
         on_delete=models.SET_NULL,
         null=True, blank=True
     )
 
-    scale = models.CharField(_('scale'), max_length=250, default=None),
+    scale = models.CharField(_('scale'), max_length=250, default=None)
 
-    href = models.CharField(_('href'), max_length=250, default=None),
+    href = models.CharField(_('href'), max_length=250, default=None)
 
 
 class RealEstateTitlePictureUrls(CoreModel):
     class Meta:
         db_table = u'RealEstateTitlePictureUrls'
-    apartment = models.ForeignKey(
+    real_estate_attachments = models.ForeignKey(
         RealEstateAttachments,
         related_name='Real_EstateTitlePictureUrls',
         on_delete=models.SET_NULL,
         null=True, blank=True
     )
 
-    scale = models.CharField(_('scale'), max_length=250, default=None),
+    scale = models.CharField(_('scale'), max_length=250, default=None)
 
-    href = models.CharField(_('href'), max_length=250, default=None),
+    href = models.CharField(_('href'), max_length=250, default=None)
