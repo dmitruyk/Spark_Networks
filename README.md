@@ -28,25 +28,26 @@ passwd: admin
 
 ## API_requests:
 ```
-/api/v1/search/?company=<name>
+http://<host>/api/v1/search/?company=<name>
 eg:
-/api/v1/search/?company=Immobilien
+http://18.196.3.9/api/v1/search/?company=Immobilien
 
-/api/v1/search/?country=<name>
+http://<host>/api/v1/search/?country=<name>
 eg:
-/api/v1/search/?country=Deutschland
+http://18.196.3.9/api/v1/search/?country=Deutschland
 
-/api/v1/search/?city=<name>
-/api/v1/search/?city=Berlin
-
-/api/v1/search/?street=<name>
+http://<host>/api/v1/search/?city=<name>
 eg:
-/api/v1/search/?street=Koenigsallee
+http://18.196.3.9/api/v1/search/?city=Berlin
+
+http://<host>/api/v1/search/?street=<name>
+eg:
+http://18.196.3.9/api/v1/search/?street=Koenigsallee
 
 Filter combinations
-/api/v1/search/?city=<name>&company=<name>&country=<name>&street=<name>
+http://<host>/api/v1/search/?city=<name>&company=<name>&country=<name>&street=<name>
 eg:
-/api/v1/search/?city=Berlin&street=Koenigsallee
+http://18.196.3.9/api/v1/search/?city=Berlin&street=Koenigsallee
 ```
 
 ## API_requests data accept from remote source:
