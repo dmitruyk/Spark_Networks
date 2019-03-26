@@ -2,6 +2,8 @@
 ##Steps to run project
 
 ```
+git clone https://github.com/dmitruyk/spark_networks.git
+
 Enter in project root
 Run command docker-compose up -d --build
 Create superuser docker-compose exec -it id_app_container python manage.py createsuperuser
