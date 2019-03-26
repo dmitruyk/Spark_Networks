@@ -549,7 +549,8 @@ class RealEstateNext(CoreModel):
 
     realEstate_freeFrom = models.CharField(_('realEstate_freeFrom'), max_length=250, default=None, null=True)
 
-    realEstate_furnishingNote = models.CharField(_('realEstate_furnishingNote'), max_length=2250, default=None, null=True)
+    realEstate_furnishingNote = models.CharField(_('realEstate_furnishingNote'), max_length=2250, default=None,
+                                                 null=True)
 
     realEstate_garden = models.BooleanField(default=False, null=True)
 
@@ -629,22 +630,24 @@ class RealEstateNext(CoreModel):
 
     realEstate_titlePicture_floorplan = models.BooleanField(default=False, null=True)
 
-    realEstate_titlePicture_title = models.CharField(_('realEstate_titlePicture_title'), max_length=250, default=None)
+    realEstate_titlePicture_title = models.CharField(_('realEstate_titlePicture_title'), max_length=250, default=None,
+                                                     null = True)
 
     realEstate_titlePicture_titlePicture = models.BooleanField(default=False)
 
-    realEstate_totalRent = models.CharField(_('realEstate_totalRent'), max_length=250, default=None)
+    realEstate_totalRent = models.CharField(_('realEstate_totalRent'), max_length=250, default=None, null=True)
 
-    realEstate_useAsFlatshareRoom = models.CharField(_('realEstate_useAsFlatshareRoom'), max_length=250, default=None)
+    realEstate_useAsFlatshareRoom = models.CharField(_('realEstate_useAsFlatshareRoom'), max_length=250, default=None,
+                                                     null=True)
 
     realtorValuationJSONLink_xlink_href = models.CharField(_('realtorValuationJSONLink_xlink_href'),
-                                                           max_length=550, default=None)
+                                                           max_length=550, default=None, null=True)
 
     realtorValuationV2JSONLink_xlink_href = models.CharField(_('realtorValuationJSONLink_xlink_href'),
-                                                             max_length=550, default=None)
+                                                             max_length=550, default=None, null=True)
 
     realtorValuationV2JSONPLink_xlink_href = models.CharField(_('realtorValuationV2JSONPLink_xlink_href'),
-                                                              max_length=550, default=None)
+                                                              max_length=550, default=None, null=True)
 
 
 class Url(CoreModel):
@@ -657,9 +660,9 @@ class Url(CoreModel):
         null=True, blank=True
     )
 
-    scale = models.CharField(_('scale'), max_length=250, default=None)
+    scale = models.CharField(_('scale'), max_length=250, default=None, null=True)
 
-    href = models.CharField(_('href'), max_length=250, default=None)
+    href = models.CharField(_('href'), max_length=250, default=None, null=True)
 
 
 class RealEstateTitlePictureUrls(CoreModel):
@@ -672,8 +675,8 @@ class RealEstateTitlePictureUrls(CoreModel):
         null=True, blank=True
     )
 
-    scale = models.CharField(_('scale'), max_length=250, default=None)
+    scale = models.CharField(_('scale'), max_length=250, default=None, null=True)
 
-    href = models.CharField(_('href'), max_length=250, default=None)
+    href = models.CharField(_('href'), max_length=250, default=None, null=True)
 
 
