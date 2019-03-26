@@ -34,13 +34,16 @@ class Company(CoreModel):
                                                    null=True
                                                    )
 
-    contactDetails_address_houseNumber = models.PositiveIntegerField(_('contactDetails_id'),
-                                                                     null=True, blank=True, default=0,
-                                                                     unique=False)
-    contactDetails_address_postcode = models.PositiveIntegerField(_('contactDetails_address_postcode'),
-                                                                  null=True, blank=True, default=0,
-                                                                  unique=False)
-
+    contactDetails_address_houseNumber = models.CharField(_('contactDetails_address_houseNumber'),
+                                                          max_length=80,
+                                                          default=None,
+                                                          null=True
+                                                          )
+    contactDetails_address_postcode = models.CharField(_('contactDetails_address_postcode'),
+                                                       max_length=80,
+                                                       default=None,
+                                                       null=True
+                                                       )
     contactDetails_address_street = models.CharField(_('contactDetails_address_street'),
                                                      max_length=180,
                                                      default=None,
@@ -53,12 +56,11 @@ class Company(CoreModel):
                                                       null=True
                                                       )
 
-    contactDetails_cellPhoneNumberAreaCode = models.PositiveIntegerField(_('contactDetails_cellPhoneNumberAreaCode'),\
-                                                                         null=True,
-                                                                         blank=True,
-                                                                         default=0,
-                                                                         unique=False
-                                                                         )
+    contactDetails_cellPhoneNumberAreaCode = models.CharField(_('contactDetails_cellPhoneNumberAreaCode'),
+                                                              max_length=180,
+                                                              default=None,
+                                                              null=True
+                                                              )
     contactDetails_cellPhoneNumberCountryCode = models.CharField(_('contactDetails_cellPhoneNumberCountryCode'),
                                                                  max_length=100,
                                                                  default=None,
@@ -191,9 +193,11 @@ class Company(CoreModel):
                                                                null=True
                                                                )
 
-    contactFormConfiguration_freemiumSettings_duration = models.PositiveIntegerField(default=0,
-                                                                                     null=True
-                                                                                     )
+    contactFormConfiguration_freemiumSettings_duration = models.CharField(_('contactFormConfiguration_freemiumSettings_duration'),
+                                                                          max_length=100,
+                                                                          default=None,
+                                                                          null=True
+                                                                          )
 
     contactFormConfiguration_incomeField = models.CharField(_('contactFormConfiguration_incomeField'),
                                                             max_length=100,
