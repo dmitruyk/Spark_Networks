@@ -30,11 +30,12 @@ class RentFullViewModel(AbstractViewModel):
             response['adLinkForJSONP_xlink_href'] = None if not self.apartment.adLinkForJSONP_xlink_href else self.apartment.adLinkForJSONP_xlink_href
             response['adLinkForXMLData_xlink_href'] = None if not self.apartment.adLinkForXMLData_xlink_href else self.apartment.adLinkForXMLData_xlink_href
 
-            real_estate_first = {field.name:getattr(self.company, field.name) for field in self.company._meta.fields}
-            real_estate_first.pop('id')
-            real_estate_first.pop('created')
-            real_estate_first.pop('updated')
-            response.update(real_estate_first)
+            if self.company:
+                real_estate_first = {field.name:getattr(self.company, field.name) for field in self.company._meta.fields}
+                real_estate_first.pop('id')
+                real_estate_first.pop('created')
+                real_estate_first.pop('updated')
+                response.update(real_estate_first)
 
             response['imprintLink_xlink_href'] = None if not self.imprintlink.imprintLink_xlink_href else self.imprintlink.imprintLink_xlink_href
 
@@ -47,8 +48,9 @@ class RentFullViewModel(AbstractViewModel):
 
             p = {}
             at = []
-            res = {}
+            print(self.real_estate_attachments)
             for attach in self.real_estate_attachments:
+                res = {}
                 res['@xsi.type'] = attach.xsi_type
                 res['@xlink.href'] = attach.xlink_href
                 res['@id'] = attach.id_achments
@@ -68,26 +70,28 @@ class RentFullViewModel(AbstractViewModel):
 
                 res['urls'] = [{'url': pict}]
                 at.append(res)
+
 #
             response['realEstate_attachments'] = {'@xlink.href': None if self.real_estate_attachments[0].realEstate_attachments_xlink_href is None
                                                     else self.real_estate_attachments[0].realEstate_attachments_xlink_href,
                                                   'attachment' : at,
                                                  }
 
-            real_estate_next = {field.name: getattr(self.real_estate_next, field.name) for field in
-                                self.real_estate_next._meta.fields}
+            if self.real_estate_next:
+                real_estate_next = {field.name: getattr(self.real_estate_next, field.name) for field in
+                                    self.real_estate_next._meta.fields}
 
-            real_estate_next.pop('id')
-            real_estate_next.pop('created')
-            real_estate_next.pop('updated')
-            real_estate_next.pop('real_estate')
+                real_estate_next.pop('id')
+                real_estate_next.pop('created')
+                real_estate_next.pop('updated')
+                real_estate_next.pop('real_estate')
 
-            response.update(real_estate_next)
+                response.update(real_estate_next)
 
             real_estate_title_picture_urls = Url.objects.filter(realestate=self.real_estate).all()
-            pic_second = {}
             pic_main = []
             for pic in real_estate_title_picture_urls:
+                pic_second = {}
                 pic_second['@scale'] = pic.scale
                 pic_second['@href'] = pic.href
                 pic_main.append(pic_second)
