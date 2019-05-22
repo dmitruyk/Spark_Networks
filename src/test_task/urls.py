@@ -21,5 +21,5 @@ from django.conf import settings
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url(r'^', include('rentdata.urls')),
+    url(r'^', include('kredit.urls')),
 ]

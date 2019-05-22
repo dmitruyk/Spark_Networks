@@ -1,5 +1,6 @@
 #!/bin/sh
 python manage.py collectstatic --noinput
+python manage.py makemigrations --noinput
 until python manage.py migrate --no-input; do
   >&2 echo "Postgres database is unavailable - sleeping"
   sleep 1

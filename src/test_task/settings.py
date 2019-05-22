@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rentdata',
+    'kredit',
 ]
 
 MIDDLEWARE = [
@@ -109,3 +109,7 @@ USE_TZ = True
 # STATIC
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# AUTH
+AUTH_USER_MODEL = 'kredit.User'
+#AUTH_PROFILE_MODULE = 'models.UserProfile'
